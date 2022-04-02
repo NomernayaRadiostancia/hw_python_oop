@@ -1,6 +1,5 @@
 class InfoMessage:
     """Информация об тренировке."""
-    
     def __init__(self,
                  training_type: str,
                  duration: float,
@@ -13,7 +12,6 @@ class InfoMessage:
         self.distance = distance
         self.speed = speed
         self.calories = calories
-
     def get_message(self) -> str:
         return (f'Тип тренировки: {self.training_type}; '
                 f'Длительность: {self.duration:.3f} ч.; '
@@ -24,10 +22,8 @@ class InfoMessage:
 
 class Training:
     """Базовый класс тренировки."""
-
     M_IN_KM = 1000 # константа для перевода значений из м в км
     LEN_STEP = 0.65 # 1 шаг в м
-
     def __init__(self,
                  action: int,
                  duration: float,
@@ -39,22 +35,18 @@ class Training:
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        
         return self.action * self.LEN_STEP / self.M_IN_KM
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        
         return self.get_distance() / self.duration
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        
         pass
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        
         info = InfoMessage(type(self).__name__,
                        self.duration,
                        self.get_distance(),
@@ -66,16 +58,13 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
-    
     def __init__(self, action: int, duration: float, weight: float) -> None:
         super().__init__(action, duration, weight)
         self.training_type = Running
-    
     M_IN_H = 60
     LEN_STEP = 0.65
     coeff_calorie_1 = 18
     coeff_calorie_2 = 20
-    
     def get_spent_calories(self) -> float:
         return ((self.coeff_calorie_1
                  * self.get_mean_speed()
@@ -86,9 +75,7 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
-    
     M_IN_H = 60
-
     def __init__(self,
                  action: int,
                  duration: float,
@@ -142,8 +129,7 @@ def read_package(workout_type: str, data: list) -> Training:
 
     base_data = {'SWM': Swimming,
                 'RUN': Running,
-                'WLK': SportsWalking}
-                
+                'WLK': SportsWalking}           
     return base_data.get(workout_type)(*data)
 
 
