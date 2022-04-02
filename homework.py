@@ -50,10 +50,10 @@ class Training:
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
         info = InfoMessage(type(self).__name__,
-                                self.duration,
-                                self.get_distance(),
-                                self.get_mean_speed(),
-                                self.get_spent_calories())               
+                            self.duration,
+                            self.get_distance(),
+                            self.get_mean_speed(),
+                            self.get_spent_calories())            
         return info
 
 
@@ -131,7 +131,7 @@ def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
     base_data = {'SWM': Swimming,
                  'RUN': Running,
-                 'WLK': SportsWalking}         
+                 'WLK': SportsWalking}           
     return base_data.get(workout_type)(*data)
 
 
