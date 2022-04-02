@@ -131,7 +131,6 @@ class Swimming(Training):
                 / self.M_IN_KM / self.duration)
 
     def get_spent_calories(self) -> float:
-        
         coeff_1 = 1.1
         coeff_2 = 2
 
@@ -144,12 +143,12 @@ def read_package(workout_type: str, data: list) -> Training:
     base_data = {'SWM': Swimming,
                 'RUN': Running,
                 'WLK': SportsWalking}
+                
     return base_data.get(workout_type)(*data)
 
 
 def main(training: Training) -> None:
     """Главная функция."""
-    
     print(training.show_training_info().get_message())
 
 
