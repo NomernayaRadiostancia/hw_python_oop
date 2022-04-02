@@ -22,8 +22,9 @@ class InfoMessage:
 
 class Training:
     """Базовый класс тренировки."""
-    M_IN_KM = 1000 # константа для перевода значений из м в км
-    LEN_STEP = 0.65 # 1 шаг в м
+    M_IN_KM = 1000 
+    LEN_STEP = 0.65 
+    
     def __init__(self,
                  action: int,
                  duration: float,
@@ -51,8 +52,7 @@ class Training:
                        self.duration,
                        self.get_distance(),
                        self.get_mean_speed(),
-                       self.get_spent_calories()
-                       )
+                       self.get_spent_calories())               
         return info
 
 
@@ -65,6 +65,8 @@ class Running(Training):
     LEN_STEP = 0.65
     coeff_calorie_1 = 18
     coeff_calorie_2 = 20
+    
+    
     def get_spent_calories(self) -> float:
         return ((self.coeff_calorie_1
                  * self.get_mean_speed()
@@ -126,7 +128,6 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-
     base_data = {'SWM': Swimming,
                 'RUN': Running,
                 'WLK': SportsWalking}           
