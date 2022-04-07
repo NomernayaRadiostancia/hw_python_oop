@@ -64,7 +64,7 @@ class Running(Training):
     LEN_STEP = 0.65
     Coeff_calorie_1 = 18
     Coeff_calorie_2 = 20
-    
+
     def __init__(self, action: int, duration: float, weight: float) -> None:
         super().__init__(action, duration, weight)
 
