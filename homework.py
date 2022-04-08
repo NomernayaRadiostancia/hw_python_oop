@@ -65,9 +65,6 @@ class Running(Training):
     Coeff_calorie_1 = 18
     Coeff_calorie_2 = 20
 
-    def __init__(self, action: int, duration: float, weight: float) -> None:
-        super().__init__(action, duration, weight)
-
     def get_spent_calories(self) -> float:
         return ((self.Coeff_calorie_1
                  * self.get_mean_speed()
